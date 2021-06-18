@@ -8,28 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    let colors: [Color] = [
-        .red, .green, .blue, .gray
-    ]
-    @State private var isHint = false
     
     var body: some View {
+        
         TabView {
             
             GeometryReader { proxy in
                 TabView {
                     
                     VStack {
-                        
                         Text("안녕하세요")
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                             .padding(2)
-                        
-                        if(isHint) {
-                            Text("Hello")
-                                .font(.body)
-                        }
                     }
                     .rotationEffect(.degrees(-90))
                     .frame(
@@ -42,13 +33,6 @@ struct ContentView: View {
                             .font(.largeTitle)
                             .fontWeight(.heavy)
                         
-                        if(isHint) {
-                            Text("Nice to meet you")
-                                .font(.body)
-                        }
-                    }
-                    .onAppear {
-                        self.isHint = false
                     }
                     .rotationEffect(.degrees(-90))
                     .frame(
@@ -66,23 +50,28 @@ struct ContentView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             }
             .tabItem {
-                Image(systemName: "1.square.fill")
-                Text("First")
+                Image(systemName: "house")
             }
-            .onTapGesture(count: 2, perform: {
-                withAnimation {
-                    self.isHint.toggle()
-                }
-            })
+            
             
             Text("Test")
                 .tabItem {
-                    Image(systemName: "2.square.fill")
-                    Text("First")
+                    Image(systemName: "magnifyingglass")
+                    
+                }
+            Text("Test")
+                .tabItem {
+                    Image(systemName: "bell")
+                    
+                }
+            Text("Test")
+                .tabItem {
+                    Image(systemName: "person")
                 }
                     
                     
         }
+        .accentColor(.pink)
     }
 }
 
